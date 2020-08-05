@@ -1,0 +1,87 @@
+<%- include('./src/header'); %>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title mb-2"><i class="dripicons-user"></i>  Puan Ekle</h4>  
+            <div class="">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Puan Ekle</a></li>
+                </ol>
+            </div>                                      
+        </div>
+    </div>
+</div>
+<%- include('./src/sidebar'); %>
+                <div class="page-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">BÖLÜM PUAN KAYIT</h4>
+                                            <hr>
+                                        <form action='/university/addPoints/<%=UniversityId%>/<%=FacultiesId%>/<%=DepartmentId%>' method='POST' >
+                                            <div class="form-group">
+                                                <label class="control-label">Öğretim Türü</label>
+                                                <select name="educationType" class="form-control">
+                                                    <option value="" disabled="" selected="">Öğretim Türü</option>
+                                                    <option value="Örgün Öğ.">Örgün Öğ.</option>
+                                                    <option value="Uzaktan Öğ.">Uzaktan Öğ.</option>
+                                                    <option value="Açık Öğ.">Açık Öğ.</option>
+                                                    <option value="İkinci Öğ.">İkinci Öğ.</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Ücret Türü</label>
+                                                <select name="priceType" class="form-control">
+                                                    <option value="" disabled="" selected="">Ücret Türü</option>
+                                                        <option value='Ücretsiz'>Ücretsiz</option>
+                                                        <option value='Ücretli'>Ücretli</option>
+                                                        <option value='Harç Üc.'>Harç Üc.</option>
+                                                        <option value='Burslu'>Burslu</option>
+                                                        <option value='%25 İn.'>%25 İn.</option>
+                                                        <option value='%50 İn.'>%50 İn.</option>
+                                                        <option value='%75 İn.'>%75 İn.</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ranking">Başarı Sıralaması</label>
+                                                <input name='ranking' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="point">Puan</label>
+                                                <input name='point' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                            <br>
+                                            <button name="action" type="submit" class="btn btn-primary">Ekle</button>
+                                        </form>                                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                            <thead>
+                                            <tr>
+                                                <th>Puan Bilgileri</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <% find_department1.forEach(function(department){ %>
+                                                <tr>
+                                                        <td><%= department.points %></td>
+                                                    </tr>
+                                            <% }); %> 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<%- include('./src/footer'); %>
